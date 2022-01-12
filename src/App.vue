@@ -1,10 +1,34 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Sidebar></Sidebar>
+  <Header></Header
+  ><button @click="openNav()" type="button" class="btn btn-outline-dark mb-4">
+    <font-awesome-icon class="align-middle fs-1" :icon="['fas', 'bars']" />
+  </button>
+
+  <router-view class="min-vh-100"></router-view>
+  <Footer></Footer>
 </template>
+
+<script>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+import Sidebar from "@/components/Sidebar.vue";
+
+export default {
+  name: "App",
+  components: {
+    Footer,
+    Header,
+    Sidebar,
+  },
+  methods: {
+    openNav() {
+      document.getElementById("sidebar").classList.toggle("w-25");
+      document.getElementById("sidebar").classList.toggle("p-3");
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -12,19 +36,5 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

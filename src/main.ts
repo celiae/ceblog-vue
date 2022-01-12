@@ -1,5 +1,69 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faInfo,
+  faInfoCircle,
+  faHome,
+  faBlog,
+  faPaste,
+  faCheckDouble,
+  faAngry,
+  faCheck,
+  faTerminal,
+  faBars,
+  faCloudMeatball,
+  faLocationArrow,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faTwitter,
+  faTelegram,
+  faTelegramPlane,
+  faAngellist,
+  faGithubAlt,
+  faGithubSquare,
+  faBloggerB,
+  faAndroid,
+  faLinux,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-createApp(App).use(router).mount('#app')
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+
+library.add(
+  faInfo,
+  faHome,
+  faGithub,
+  faBlog,
+  faPaste,
+  faCheckDouble,
+  faTwitter,
+  faTelegram,
+  faTelegramPlane,
+  faAngry,
+  faAngellist,
+  faCheck,
+  faGithubAlt,
+  faGithubSquare,
+  faBloggerB,
+  faTerminal,
+  faInfoCircle,
+  faBars,
+  faCloudMeatball,
+  faAndroid,
+  faLinux,
+  faLocationArrow
+);
+
+AOS.init({ delay: 100, duration: 600, easing: "ease-out-cubic" });
+
+createApp(App)
+  .use(router)
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .mount("#app");
