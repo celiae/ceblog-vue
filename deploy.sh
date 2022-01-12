@@ -11,7 +11,7 @@ ssh-add /home/ceelia/.ssh/github_id_rsa
 git add -A
 git commit -m 'source code'
 # git push origin main
-git push -f git@github.com:celiae/ceblog.git main
+git push -f git@github.com:celiae/ceblog.git master:main
 
 # build
 yarn build
@@ -24,13 +24,12 @@ cd dist
 
 git init
 git add -A
-git branch -m main
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:celiae/ceblog main:gh-pages
+git push -f git@github.com:celiae/ceblog master:gh-pages
 
 cd -
