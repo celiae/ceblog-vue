@@ -19,7 +19,7 @@
     <div
       @click="copyText()"
       v-if="show"
-      class="position-absolute text-light top-0 end-0 m-2 btn btn-light fs-6"
+      class="position-absolute text-light top-0 end-0 m-2 btn btn-light fs-6 opacity-75"
       data-bs-toggle="tooltip"
       data-bs-placement="right"
       title="Click to copy"

@@ -1,82 +1,35 @@
 <template>
   <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingOne">
+    <div class="accordion-item" v-for="content in contents" :key="content.id">
+      <h2 class="accordion-header">
         <button
           class="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseOne"
+          :data-bs-target="content.data_bs_target"
           aria-expanded="false"
-          aria-controls="flush-collapseOne"
+          :aria-controls="content.aria_controls"
         >
-          {{ content[0].title }}
+          {{ content.title }}
         </button>
       </h2>
       <div
-        id="flush-collapseOne"
+        :id="content.text_id"
         class="accordion-collapse collapse"
-        aria-labelledby="flush-headingOne"
+        :aria-labelledby="content.aria_labelledby"
         data-bs-parent="#accordionFlushExample"
       >
-        <div class="accordion-body">
-          {{ content[0].text }}
+        <div v-if="content.text" class="accordion-body">
+          {{ content.text }}
         </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingTwo">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseTwo"
-          aria-expanded="false"
-          aria-controls="flush-collapseTwo"
-        >
-          Accordion Item #2
-        </button>
-      </h2>
-      <div
-        id="flush-collapseTwo"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingTwo"
-        data-bs-parent="#accordionFlushExample"
-      >
-        <div class="accordion-body">
-          Placeholder content for this accordion, which is intended to
-          demonstrate the <code>.accordion-flush</code> class. This is the
-          second item's accordion body. Let's imagine this being filled with
-          some actual content.
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingThree">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#flush-collapseThree"
-          aria-expanded="false"
-          aria-controls="flush-collapseThree"
-        >
-          Accordion Item #3
-        </button>
-      </h2>
-      <div
-        id="flush-collapseThree"
-        class="accordion-collapse collapse"
-        aria-labelledby="flush-headingThree"
-        data-bs-parent="#accordionFlushExample"
-      >
-        <div class="accordion-body">
-          Placeholder content for this accordion, which is intended to
-          demonstrate the <code>.accordion-flush</code> class. This is the third
-          item's accordion body. Nothing more exciting happening here in terms
-          of content, but just filling up the space to make it look, at least at
-          first glance, a bit more representative of how this would look in a
-          real-world application.
+        <div v-if="content.commands">
+          <Shell
+            class="mb-3"
+            v-for="command in content.commands"
+            :key="command.id"
+            :msg="command"
+            :lang="content.lang"
+          ></Shell>
         </div>
       </div>
     </div>
@@ -84,10 +37,14 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
+import Shell from "@/components/common/Shell.vue";
 
 export default defineComponent({
   props: {
-    content: Array,
+    contents: Array,
+  },
+  components: {
+    Shell,
   },
 });
 </script>

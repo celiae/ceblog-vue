@@ -9,27 +9,17 @@
     </div>
   </div>
   <div class="container pt-5">
-    <h3 class="text-start mt-4">
-      当在联网时遇到Operation not possible due to RF-kill，你可以
-    </h3>
-    <Shell msg="sudo rfkill list" lang="sh"></Shell>
-    <Shell msg="sudo rfkill unblock wifi" lang="sh"></Shell>
-  </div>
-  <div class="container pt-5">
-    <h3 class="text-start mt-4">文件安装在哪</h3>
-    <Shell msg="pacman -Ql package" lang="sh"></Shell>
-  </div>
-  <div class="container pt-5">
-    <h3 class="text-start mt-4">不知道某个命令属于哪个包</h3>
-    <Shell msg="sudo pacman -F <command>" lang="sh"></Shell>
+    <div class="display-4">可能会遇到的问题</div>
+    <Accordion :contents="problems"></Accordion>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Shell from "@/components/common/Shell.vue";
+import Accordion from "@/components/common/Accordion.vue";
 export default defineComponent({
-  components: { Shell },
+  components: { Shell, Accordion },
   data() {
     return {
       commands: [
@@ -46,7 +36,7 @@ export default defineComponent({
         { msg: "mkfs.vfat /dev/nvme0n1p1 # option", lang: "zsh" },
         { msg: "mount /dev/nvme0n1p2 /mnt", lang: "zsh" },
         {
-          msg: "pacstrap /mnt base base-devel linux linux-firmware grub neovim dhcpcd iwd efibootmgr bash-completion os-prober #(os-prober是双系统需要下载的包)",
+          msg: "pacstrap /mnt base base-devel linux linux-firmware grub vim dhcpcd iwd efibootmgr bash-completion zsh archlinux-keyring openssh os-prober #(os-prober是双系统需要下载的包)",
           lang: "zsh",
         },
         { msg: "genfstab -U /mnt >> /mnt/etc/fstab", lang: "zsh" },
@@ -75,6 +65,45 @@ export default defineComponent({
         {
           title: "文件安装在哪",
           text: "pacman -Ql package",
+        },
+      ],
+      problems: [
+        {
+          data_bs_target: "#flush-collapseOne",
+          aria_controls: "flush-collapseOne",
+          text_id: "flush-collapseOne",
+          aria_labelledby: "flush-headingOne",
+          title: "当在联网时遇到Operation not possible due to RF-kill，你可以",
+          text: "",
+          commands: ["sudo rfkill list", "sudo rfkill unblock wifi"],
+          lang: "bash",
+        },
+        {
+          data_bs_target: "#flush-collapseTwo",
+          aria_controls: "flush-collapseTwo",
+          text_id: "flush-collapseTwo",
+          aria_labelledby: "flush-headingTwo",
+          title: "下载安装package出错，可能需要下载archlinux-keyring",
+          commands: ["sudo pacman -S archlinux-keyring"],
+          lang: "bash",
+        },
+        {
+          data_bs_target: "#flush-collapseThree",
+          aria_controls: "flush-collapseThree",
+          text_id: "flush-collapseThree",
+          aria_labelledby: "flush-headingThree",
+          title: "文件安装在哪",
+          commands: ["pacman -Ql package"],
+          lang: "bash",
+        },
+        {
+          data_bs_target: "#flush-collapseFour",
+          aria_controls: "flush-collapseFour",
+          text_id: "flush-collapseFour",
+          aria_labelledby: "flush-headingFour",
+          title: "不知道某个命令属于哪个包",
+          commands: ["sudo pacman -F <command>"],
+          lang: "bash",
         },
       ],
     };
