@@ -1,10 +1,10 @@
 <template>
   <div
     id="sidebar"
-    class="d-flex flex-column flex-shrink-0 text-white bg-dark h-100 position-fixed t-0 s-0 overflow-hidden z-2000"
-    style="z-index: 700; width: 0; transition: all 0.5s ease"
+    class="d-flex flex-column flex-shrink-0 text-white bg-dark h-100 position-fixed t-0 s-0 z-2000"
+    style="z-index: 700; width: 0; transition: all 0.2s ease"
   >
-    <div class="row">
+    <div class="row overflow-hidden">
       <a
         href="/"
         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none col"
@@ -25,17 +25,17 @@
     </div>
     <hr />
     <ul class="nav nav-pills flex-column mb-auto fs-4">
-      <li class="nav-item mb-2">
-        <router-link class="text-decoration-none" to="/">
+      <li class="nav-item mb-2 border-bottom border-info border-4 mb-4">
+        <router-link class="text-decoration-none d-block sidebar-a" to="/">
           <font-awesome-icon
-            class="me-1"
+            class=""
             :icon="['fas', 'home']"
           ></font-awesome-icon>
           Home
         </router-link>
       </li>
-      <li class="nav-item mb-2">
-        <router-link class="text-decoration-none" to="/blogs">
+      <li class="nav-item mb-2 border-bottom border-info border-4 mb-4">
+        <router-link class="text-decoration-none d-block sidebar-a" to="/blogs">
           <font-awesome-icon
             class="me-1"
             :icon="['fas', 'blog']"
@@ -43,8 +43,12 @@
           Blogs
         </router-link>
       </li>
-      <li class="nav-item mb-2">
-        <router-link class="text-decoration-none" to="/about">
+      <li class="nav-item mb-2 border-bottom border-info border-4 mb-4">
+        <router-link
+          id="test"
+          class="text-decoration-none sidebar-a d-block"
+          to="/about"
+        >
           <font-awesome-icon
             class="me-1"
             :icon="['fas', 'info-circle']"
@@ -63,8 +67,21 @@ import { defineComponent } from "vue";
 export default defineComponent({
   methods: {
     closeNav() {
-      document.getElementById("sidebar").classList.remove("w-25");
-      document.getElementById("sidebar").classList.remove("p-3");
+      let sidebar = document.getElementById("sidebar");
+
+      sidebar.classList.remove("w-25");
+
+      sidebar.classList.remove("p-3");
+
+      let sidebar_a = document.querySelectorAll("#sidebar li");
+
+      setTimeout(() => {
+        sidebar_a.forEach((element) => {
+          element.classList.toggle("border-bottom");
+          element.classList.toggle("border-info");
+          element.classList.toggle("border-4");
+        });
+      }, 200);
     },
   },
 });

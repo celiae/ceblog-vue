@@ -30,7 +30,7 @@ export default defineComponent({
         },
         {
           title: "Github & Git",
-          content: "Git != Github",
+          content: "git -> github",
           // linkText: "如何使用git&github",
           path: "/blogs/git",
           btnIcon: ["fab", "github"],
@@ -41,6 +41,12 @@ export default defineComponent({
           // linkText: "给手机换OS",
           path: "/blogs/pixel",
           btnIcon: ["fab", "android"],
+        },
+        {
+          title: "Bluetooth on Archlinux",
+          content: "Archlinux 上使用蓝牙",
+          path: "/blogs/bluetooth",
+          btnIcon: ["fab", "bluetooth"],
         },
       ],
     };

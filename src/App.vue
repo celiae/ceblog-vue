@@ -1,9 +1,6 @@
 <template>
   <Sidebar></Sidebar>
-  <Header></Header
-  ><button @click="openNav()" type="button" class="btn btn-outline-dark mb-4">
-    <font-awesome-icon class="align-middle fs-1" :icon="['fas', 'bars']" />
-  </button>
+  <Header></Header>
 
   <router-view class="min-vh-100"></router-view>
   <Footer></Footer>
@@ -20,12 +17,6 @@ export default {
     Footer,
     Header,
     Sidebar,
-  },
-  methods: {
-    openNav() {
-      document.getElementById("sidebar").classList.toggle("w-25");
-      document.getElementById("sidebar").classList.toggle("p-3");
-    },
   },
 };
 </script>

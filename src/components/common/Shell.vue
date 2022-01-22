@@ -10,10 +10,10 @@
       class="m-auto mt-5 overflow-auto text-nowrap pt-4 pb-2 fs-3 border-top border-warning"
     >
       <font-awesome-icon
-        class="align-middle fs-1 text-light me-2"
+        class="align-middle fs-1 text-info me-2"
         :icon="['fas', 'terminal']"
       />
-      <code type="text" class="text-light m-3">{{ msg }}</code>
+      <code type="text" class="text-warning m-3">{{ msg }}</code>
     </div>
 
     <div

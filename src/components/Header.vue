@@ -1,7 +1,7 @@
 <template>
   <div
-    
-    class="container position-sticky top-0 fs-3 bg-light bg-opacity-75 text-dark"
+    class="position-sticky top-0 fs-3 bg-light bg-opacity-75 text-dark"
+    style="z-index: 500"
   >
     <header
       id="header"
@@ -17,17 +17,28 @@
         /></span>
         <span id="webTitle" style="transition: all 0.5s ease">Celiae Blog</span>
       </a>
-
-      <ul class="nav nav-pills">
+      <button
+        @click="openNav()"
+        type="button"
+        class="btn btn-outline-dark me-5"
+      >
+        <font-awesome-icon class="align-middle fs-1" :icon="['fas', 'bars']" />
+      </button>
+      <ul class="nav nav-pills ms-5">
         <li class="nav-item">
-          <a href="https://celiae.github.io" class="nav-link active" aria-current="page"
+          <a
+            href="https://celiae.github.io"
+            class="nav-link active"
+            aria-current="page"
             >Celiae<font-awesome-icon
               class="align-middle fs-1 ms-2"
               :icon="['fas', 'angry']"
           /></a>
         </li>
         <li class="nav-item">
-          <a href="https://github.com/celiae" class="nav-link border-bottom border-info"
+          <a
+            href="https://github.com/celiae"
+            class="nav-link border-bottom border-info"
             >github<font-awesome-icon
               class="align-middle fs-1 ms-2"
               :icon="['fab', 'github-alt']"
@@ -46,6 +57,21 @@ export default defineComponent({
     window.addEventListener("scroll", this.scrollFunction);
   },
   methods: {
+    openNav() {
+      let sidebar = document.querySelector("#sidebar");
+      sidebar.classList.toggle("w-25");
+      sidebar.classList.toggle("p-3");
+
+      let sidebar_a = document.querySelectorAll("#sidebar li");
+
+      sidebar_a.forEach((element) => {
+        element.classList.toggle("border-bottom");
+        element.classList.toggle("border-info");
+        element.classList.toggle("border-4");
+        element.classList.toggle("mb-4");
+      });
+    },
+
     scrollFunction() {
       if (
         document.body.scrollTop > 80 ||

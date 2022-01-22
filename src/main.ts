@@ -15,6 +15,9 @@ import {
   faBars,
   faCloudMeatball,
   faLocationArrow,
+  faExchangeAlt,
+  faExclamationTriangle,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -27,6 +30,8 @@ import {
   faBloggerB,
   faAndroid,
   faLinux,
+  faBluetooth,
+  faGitAlt,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -58,7 +63,11 @@ library.add(
   faCloudMeatball,
   faAndroid,
   faLinux,
-  faLocationArrow
+  faLocationArrow,
+  faBluetooth,
+  faExclamationTriangle,
+  faGitAlt,
+  faArrowRight
 );
 
 AOS.init({ delay: 100, duration: 600, easing: "ease-out-cubic" });

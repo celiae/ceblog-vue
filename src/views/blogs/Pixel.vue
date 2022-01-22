@@ -1,5 +1,11 @@
 <template>
   <div class="container">
+    <h1>Pxiel 支持的型号多的是</h1>
+    <p class="w-75 m-auto fs-5 text-start">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      在网上看到一些刷机知识与技巧，于是萌发了自个儿动手的念头......主要是利用搜索引擎，
+      到处搜，博客,教程，文档等等。深层肯定不理解，照着做还是勉勉强强能行。
+    </p>
     <div class="row">
       <div class="col">
         <Button @click="toTwrp()" msg="twrp" buttonStyle="bubble3"></Button>
@@ -19,7 +25,7 @@
     </div>
   </div>
   <div class="container pt-5">
-    <div class="display-4">为什么我选择Pxiel Experiences</div>
+    <div class="display-4">为什么选择Pxiel Experiences</div>
     <Accordion :contents="reason"></Accordion>
   </div>
 </template>

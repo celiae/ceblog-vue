@@ -1,5 +1,12 @@
 <template>
-  <div class="container border-success border-bottom pb-5">
+  <div class="container border-secondary border-bottom border-5 pb-5">
+    <h1>Archlinux 一切都是最新</h1>
+    <p class="w-75 m-auto fs-5 text-start">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      用了两年,从没发生什么问题。机器上所有软件一行命令即可更新至最新版本，有多新？
+      可以说每小时都有新的代码出现，每小时都有新的软件包，这是平日里用到的那些软件不能想象的事情。
+      系统及软件包占用的存储空间很小，大部分可以用来存储自己的文件。边用边学，开源软件等。
+    </p>
     <div v-for="command in commands" :key="command.id">
       <Shell
         class="rounded-end"
@@ -8,8 +15,8 @@
       ></Shell>
     </div>
   </div>
-  <div class="container pt-5">
-    <div class="display-4">可能会遇到的问题</div>
+  <div class="container pt-5" data-aos="zoom-in-up">
+    <div class="display-4 fw-bold text-primary">可能会遇到的问题</div>
     <Accordion :contents="problems"></Accordion>
   </div>
 </template>

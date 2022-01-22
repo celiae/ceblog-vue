@@ -1,9 +1,14 @@
 <template>
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item" v-for="content in contents" :key="content.id">
+  <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+    <div
+      class="accordion-item"
+      v-for="(content, index) in contents"
+      :key="content.id"
+    >
       <h2 class="accordion-header">
         <button
-          class="accordion-button collapsed"
+          :class="index % 2 != 0 ? 'text-info' : ''"
+          class="accordion-button collapsed fs-4"
           type="button"
           data-bs-toggle="collapse"
           :data-bs-target="content.data_bs_target"
@@ -46,5 +51,6 @@ export default defineComponent({
   components: {
     Shell,
   },
+  computed: {},
 });
 </script>
