@@ -1,8 +1,15 @@
 <template>
-  <Sidebar></Sidebar>
   <Header></Header>
-
-  <router-view class="min-vh-100"></router-view>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <Sidebar class="position-fixed"></Sidebar>
+      </div>
+      <div class="col-10">
+        <router-view class="min-vh-100"></router-view>
+      </div>
+    </div>
+  </div>
   <Footer></Footer>
 </template>
 

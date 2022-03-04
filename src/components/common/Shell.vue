@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-75 position-relative m-auto text-start ps-3 bg-dark text-light"
+    class="position-relative m-auto text-start ps-3 bg-dark text-light"
     @mouseover="show = true"
     @mouseleave="hideClip()"
     @click="copy()"

@@ -1,8 +1,9 @@
 <template>
   <div
-    data-aos="zoom-in-up"
-    class="card m-auto mt-4 mb-4 text-dark"
+    class="card m-auto mt-4 mb-4 text-dark blog"
     style="width: 18rem"
+    v-on="{ mouseover: doOver, mouseout: doOut }"
+    :class="{}"
   >
     <img src="@/assets/logo.svg" class="card-img-top" alt="" />
     <div class="card-body">
@@ -11,7 +12,8 @@
         {{ content }}
       </p>
       <router-link :to="path" class="btn btn-primary w-25"
-        >{{ linkText }}<font-awesome-icon class="align-middle fs-3" :icon="btnIcon"
+        >{{ linkText
+        }}<font-awesome-icon class="align-middle fs-3" :icon="btnIcon"
       /></router-link>
     </div>
   </div>
@@ -21,6 +23,11 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  data() {
+    return {
+      isOver: true,
+    };
+  },
   props: {
     title: String,
     content: String,
@@ -28,5 +35,22 @@ export default defineComponent({
     path: String,
     btnIcon: Array,
   },
+  methods: {
+    doOver: function () {
+      console.log("over");
+      this.isOver = true;
+    },
+    doOut: function () {
+      console.log("out");
+      this.isOver = false;
+    },
+  },
 });
 </script>
+
+<style lang="scss" scoped>
+.blog:hover {
+  transform: scale(1.2, 1.2) !important;
+  transition: all 0.5s ease;
+}
+</style>

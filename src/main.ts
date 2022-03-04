@@ -18,6 +18,8 @@ import {
   faExchangeAlt,
   faExclamationTriangle,
   faArrowRight,
+  faLaptopCode,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -67,7 +69,9 @@ library.add(
   faBluetooth,
   faExclamationTriangle,
   faGitAlt,
-  faArrowRight
+  faArrowRight,
+  faLaptopCode,
+  faKeyboard
 );
 
 AOS.init({ delay: 100, duration: 600, easing: "ease-out-cubic" });

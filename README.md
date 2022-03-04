@@ -1,25 +1,39 @@
-# ceblog
+# ceblog ce博客
 
-## Project setup
-```
-yarn install
-```
+通过边学边练的方式，写下自己取经途中遇到的困难
 
-### Compiles and hot-reloads for development
+## 总体
+
+### 框架
+- Vue3
+
+### 插件
+- Vue Router
+- Bootstrap5
+- Font Awesome
+
+### 语言
+- html
+- css
+- javascript
+- scss
+- typescript
+  
+## 本地开发
+
+### 下载源码
+```
+git clone https://github.com/celiae/ceblog.git
+```
+### 进入目录
+```
+cd ceblog
+```
+### 启动程序
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+网页地址: [Ceblog (Ce博客)](https://celiae.github.io/ceblog).
 

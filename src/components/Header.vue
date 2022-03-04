@@ -17,13 +17,6 @@
         /></span>
         <span id="webTitle" style="transition: all 0.5s ease">Celiae Blog</span>
       </a>
-      <button
-        @click="openNav()"
-        type="button"
-        class="btn btn-outline-dark me-5"
-      >
-        <font-awesome-icon class="align-middle fs-1" :icon="['fas', 'bars']" />
-      </button>
       <ul class="nav nav-pills ms-5">
         <li class="nav-item">
           <a
@@ -57,21 +50,6 @@ export default defineComponent({
     window.addEventListener("scroll", this.scrollFunction);
   },
   methods: {
-    openNav() {
-      let sidebar = document.querySelector("#sidebar");
-      sidebar.classList.toggle("w-25");
-      sidebar.classList.toggle("p-3");
-
-      let sidebar_a = document.querySelectorAll("#sidebar li");
-
-      sidebar_a.forEach((element) => {
-        element.classList.toggle("border-bottom");
-        element.classList.toggle("border-info");
-        element.classList.toggle("border-4");
-        element.classList.toggle("mb-4");
-      });
-    },
-
     scrollFunction() {
       if (
         document.body.scrollTop > 80 ||
