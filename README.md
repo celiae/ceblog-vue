@@ -34,6 +34,4 @@ cd ceblog
 yarn serve
 ```
 
-
 网页地址: [Ceblog (Ce博客)](https://celiae.github.io/ceblog).
-
