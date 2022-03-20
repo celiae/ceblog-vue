@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top border-primary"
+    class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top border-primary bg-dark text-light"
   >
     <div class="col-md-4 d-flex align-items-center">
       <a
@@ -8,7 +8,9 @@
         class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
       >
       </a>
-      <span class="text-dark">ALL RIGHTS RESERVE  &copy; {{ getYear }} Celiae</span>
+      <span class="text-muted">
+        ALL RIGHTS RESERVE &copy; {{ getYear }} Celiae</span
+      >
     </div>
 
     <ul

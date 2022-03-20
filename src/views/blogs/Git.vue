@@ -24,7 +24,9 @@
         :msg="command.msg"
         :lang="command.lang"
       ></Shell>
-      <div class="w-75 m-auto text-start fs-5 mt-2">
+      <div
+        class="border-bottom border-warning border-4 w-75 m-auto text-start fs-5 mt-2"
+      >
         {{ command.description }}
       </div>
     </div>

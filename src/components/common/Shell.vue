@@ -1,18 +1,18 @@
 <template>
   <div
-    class="position-relative m-auto text-start ps-3 bg-dark text-light"
-    @mouseover="show = true"
+    class="w-100 position-relative m-auto text-start ps-3 bg-dark text-light"
+    @mouseover="shellMouseOver()"
     @mouseleave="hideClip()"
     @click="copy()"
     data-aos="zoom-in"
   >
     <div
-      class="m-auto mt-5 overflow-auto text-nowrap pt-4 pb-2 fs-3 border-top border-warning"
+      class="m-auto mt-5 overflow-auto text-nowrap pt-4 pb-2 fs-3 border-warning"
     >
       <font-awesome-icon
-        class="align-middle fs-1 text-info me-2"
+        class="p-2 border-3 border-start border-bottom border-primary align-middle fs-1 text-info me-2"
         :icon="['fas', 'terminal']"
-      />
+      /><code> ~$ </code>
       <code type="text" class="text-warning m-3">{{ msg }}</code>
     </div>
 
@@ -38,6 +38,7 @@
       />
     </div>
   </div>
+  <div class="border-bottom border-dark">--</div>
 </template>
 
 <script>
@@ -69,6 +70,12 @@ export default defineComponent({
         this.clipboardShow = true;
         this.checkedShow = false;
       }, 3000);
+    },
+    shellMouseOver() {
+      //show clipboar
+      this.show = true;
+
+      //animation
     },
   },
 });

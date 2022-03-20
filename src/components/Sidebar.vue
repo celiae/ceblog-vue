@@ -1,8 +1,8 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" v-if="show">
     <div
       class="d-flex flex-column flex-shrink-0 bg-light"
-      style="width: 4.5rem; z-index:300"
+      style="width: 4.5rem; z-index: 300"
     >
       <a
         href="/"
@@ -91,6 +91,28 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  methods: {},
+  data() {
+    return {
+      show: false,
+    };
+  },
+  created() {
+    window.addEventListener("mousemove", this.windowMove);
+  },
+  methods: {
+    windowMove(ev) {
+      if (ev.screenX > 100) {
+        this.show = false;
+      } else {
+        this.show = true;
+      }
+    },
+  },
 });
 </script>
+
+<style scoped>
+.sidebar {
+  z-index: 1000;
+}
+</style>

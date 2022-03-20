@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <div class="text-start ps-5 ms-5"><font-awesome-icon
+        class="align-middle fs-1 me-2"
+        :icon="['fas', 'arrow-left']"
+      />导航:我在这里</div>
     <Heros></Heros>
   </div>
 </template>

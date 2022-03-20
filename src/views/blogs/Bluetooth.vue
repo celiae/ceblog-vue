@@ -12,6 +12,11 @@
         :msg="command.msg"
         :lang="command.lang"
       ></Shell>
+      <div
+        class="border-bottom border-primary border-4 w-75 m-auto text-start fs-5 mt-2"
+      >
+        {{ command.description }}
+      </div>
     </div>
     <p class="fs-3 pt-4 text-danger">
       <font-awesome-icon
@@ -38,14 +43,17 @@ export default defineComponent({
         {
           msg: "sudo pacman -S bluez",
           lang: "bash",
+          description: "安装蓝牙软件",
         },
         {
           msg: "sudo systemctl enable --now bluetooth",
           lang: "bash",
+          description: "启动蓝牙",
         },
         {
           msg: "gpasswd -a <user> lp    #加入lp组才能使用蓝牙",
           lang: "bash",
+          description: "加入lp组",
         },
       ],
       reason: [

@@ -6,6 +6,14 @@
       在网上看到一些刷机知识与技巧，于是萌发了自个儿动手的念头......主要是利用搜索引擎，
       到处搜，博客,教程，文档等等。深层肯定不理解，照着做还是勉勉强强能行。
     </p>
+    <div class="bg-primary border">
+      <span class="text-light">适用手机型号：</span>
+      <div class="badge btn-dark m-3">Xiaomi 小米</div>
+      <div class="badge btn-dark m-3">Oneplus 一加</div>
+      <div class="text-warning fw-bold bg-dark p-1">
+        其他品牌的手机刷机基本是GG
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <Button @click="toTwrp()" msg="twrp" buttonStyle="bubble3"></Button>

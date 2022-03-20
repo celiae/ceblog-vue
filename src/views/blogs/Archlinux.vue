@@ -13,6 +13,14 @@
         :msg="command.msg"
         :lang="command.lang"
       ></Shell>
+      <div
+        class="border-bottom border-primary border-4 w-75 m-auto text-start fs-5 mt-2"
+      >
+        {{ command.description }}
+      </div>
+      <div class="w-75 m-auto text-start fs-5 mt-2">
+        <a :href="command.resource">{{ command.resourceDes }}</a>
+      </div>
     </div>
   </div>
   <div class="container pt-5" data-aos="zoom-in-up">
@@ -30,43 +38,120 @@ export default defineComponent({
   data() {
     return {
       commands: [
-        { msg: "iwctl", lang: "zsh" },
-        { msg: "device list", lang: "zsh" },
-        { msg: "station wlan0 scan", lang: "zsh" },
-        { msg: "station device get-networks", lang: "zsh" },
-        { msg: "station device connect SSID", lang: "zsh" },
-        { msg: "vim /etc/pacman.d/mirrorlist", lang: "zsh" },
-        { msg: "ls /sys/firmware/efi/efivars", lang: "zsh" },
-        { msg: "lsblk", lang: "zsh" },
-        { msg: "cfdisk /dev/nvme0n1", lang: "zsh" },
-        { msg: "mkfs.ext4 /dev/nvme0n1p2", lang: "zsh" },
-        { msg: "mkfs.vfat /dev/nvme0n1p1 # option", lang: "zsh" },
-        { msg: "mount /dev/nvme0n1p2 /mnt", lang: "zsh" },
+        { msg: "iwctl", lang: "zsh", description: "进入联网工具iwctl" },
+        { msg: "device list", lang: "zsh", description: "查看网卡" },
+        { msg: "station wlan0 scan", lang: "zsh", description: "扫描wifi" },
+        {
+          msg: "station device get-networks",
+          lang: "zsh",
+          description: "扫描结果",
+        },
+        {
+          msg: "station device connect SSID",
+          lang: "zsh",
+          description: "连接相应wifi SSID为wifi名",
+        },
+        {
+          msg: "vim /etc/pacman.d/mirrorlist",
+          lang: "zsh",
+          description:
+            "镜像源是下载软件包的服务器,在这里,我们把China那一块URL移到最上面,pacman则会优先从China源下载,速度更快",
+        },
+        {
+          msg: "ls /sys/firmware/efi/efivars",
+          lang: "zsh",
+          description: "是UEFI启动马,有文件则是,空则是普通BIOS",
+        },
+        { msg: "lsblk", lang: "zsh", description: "磁盘情况" },
+        {
+          msg: "cfdisk /dev/nvme0n1",
+          lang: "zsh",
+          description: "cfdisk工具操作磁盘,分区",
+          resource:
+            "https://wiki.archlinux.org/title/Partitioning#Example_layouts",
+          resourceDes: "Archlinux wiki - partition layout",
+        },
+        {
+          msg: "mkfs.ext4 /dev/nvme0n1p2",
+          lang: "zsh",
+          description: "格式化主分区, btrfs/ext4/... 格式",
+        },
+        {
+          msg: "mkfs.vfat /dev/nvme0n1p1",
+          lang: "zsh",
+          description: "格式化grub启动分区",
+        },
+        {
+          msg: "mount /dev/nvme0n1p2 /mnt",
+          lang: "zsh",
+          description: "挂载主分区",
+        },
         {
           msg: "pacstrap /mnt base base-devel linux linux-firmware grub vim dhcpcd iwd efibootmgr bash-completion zsh archlinux-keyring openssh os-prober #(os-prober是双系统需要下载的包)",
           lang: "zsh",
+          description:
+            "pacstrap安装软件包,base是基础软件包,base-devel是基础软件包的编译依赖,linux是系统软件包,linux-firmware是系统软件包的驱动,grub是启动软件包,vim是编辑器,dhcpcd是网络驱动,iwd是网络驱动,efibootmgr是UEFI启动马,bash-completion是编辑器插件,zsh是编辑器,archlinux-keyring是软件包签名,openssh是网络驱动,os-prober是双系统需要下载的包",
         },
-        { msg: "genfstab -U /mnt >> /mnt/etc/fstab", lang: "zsh" },
-        { msg: "arch-chroot /mnt", lang: "zsh" },
-        { msg: "systemctl enable dhcpcd", lang: "zsh" },
-        { msg: "mkinitcpio -P", lang: "zsh" },
-        { msg: "passwd", lang: "zsh" },
-        { msg: "mkdir /boot/efi", lang: "zsh" },
-        { msg: "mount /dev/nvme0n1p1 /boot/efi", lang: "zsh" },
+        {
+          msg: "genfstab -U /mnt >> /mnt/etc/fstab",
+          lang: "zsh",
+          description: "启动时自动挂载主分区",
+        },
+        { msg: "arch-chroot /mnt", lang: "zsh", description: "切换根分区" },
+        { msg: "systemctl enable dhcpcd", lang: "zsh", description: "上网" },
+        { msg: "mkinitcpio -P", lang: "zsh", description: "内核" },
+        { msg: "passwd", lang: "zsh", description: "设置root密码" },
+        {
+          msg: "mkdir /boot/efi",
+          lang: "zsh",
+          description: "准备grub分区挂载点",
+        },
+        {
+          msg: "mount /dev/nvme0n1p1 /boot/efi",
+          lang: "zsh",
+          description: "挂载启动分区",
+        },
         {
           msg: "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader=GRUB",
           lang: "zsh",
+          description: "安装grub",
         },
         {
           msg: "echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub",
           lang: "zsh",
+          description: "允许grub检测系统",
         },
-        { msg: "grub-mkconfig -o /boot/grub/grub.cfg", lang: "zsh" },
-        { msg: "gpasswd -a user group #wheel", lang: "zsh" },
-        { msg: "sudo pacman -S archlinux-keyring", lang: "zsh" },
-        { msg: "pacman -S adobe-source-han-sans-cn-fonts fcitx", lang: "zsh" },
-        { msg: "exit", lang: "zsh" },
-        { msg: "reboot", lang: "zsh" },
+        {
+          msg: "grub-mkconfig -o /boot/grub/grub.cfg",
+          lang: "zsh",
+          description: "生成grub配置文件",
+        },
+        {
+          msg: "useradd -m celiae",
+          lang: "zsh",
+          description: "创建用户",
+        },
+        {
+          msg: "gpasswd -a user group #wheel",
+          lang: "zsh",
+          description: "sudo授权",
+        },
+        {
+          msg: "sudo pacman -S archlinux-keyring",
+          lang: "zsh",
+          description: "安装软件包签名",
+        },
+        {
+          msg: "pacman -S adobe-source-han-sans-cn-fonts fcitx",
+          lang: "zsh",
+          description: "安装中文字体",
+        },
+        {
+          msg: "exit",
+          lang: "zsh",
+          description: "退出硬盘系统至iso安装系统,或者按Ctrl+d",
+        },
+        { msg: "reboot", lang: "zsh", description: "重启" },
       ],
       pacman: [
         {
